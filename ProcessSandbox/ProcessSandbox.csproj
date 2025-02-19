@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ProcessSandboxVersion>0.1.0</ProcessSandboxVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RuntimeIdentifiers>linux-x64</RuntimeIdentifiers>
+    <RootNamespace>ProcessSandbox</RootNamespace>
+    <AssemblyTitle>ProcessSandbox</AssemblyTitle>
+    <AssemblyVersion>$(ProcessSandboxVersion).0</AssemblyVersion>
+    <FileVersion>$(ProcessSandboxVersion).0</FileVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>ProcessSandbox</PackageId>
+    <Product>ProcessSandbox</Product>
+    <Title>ProcessSandbox</Title>
+    <Version>$(ProcessSandboxVersion)</Version>
+    <Authors>Alexander Mezhov</Authors>
+    <Description>Provides a simple and lightweight way to run processes with given limits (CPU, RAM, I/O etc).</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/AlexMAS/ProcessSandbox</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/AlexMAS/ProcessSandbox</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Process Sandbox Limit Resource Statistic</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <NeutralLanguage />
+    <Company />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(SolutionDir)Sandbox/sandbox-exec" Pack="true" PackagePath="runtimes/linux-x64/native/">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <RuntimeHostConfigurationOption Include="System.Globalization.Invariant" Value="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>$(SolutionName).Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+</Project>

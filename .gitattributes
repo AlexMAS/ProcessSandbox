@@ -1,0 +1,9 @@
+* text=auto
+
+# Windows files
+*.bat text eol=crlf
+
+# Unix files
+*.sh text eol=lf
+
+Sandbox/sandbox-exec filter=lfs diff=lfs merge=lfs -text
