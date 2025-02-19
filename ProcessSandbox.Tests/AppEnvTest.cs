@@ -47,13 +47,22 @@ public class AppEnvTest
     public void ShouldReturnTrueWhenChildrenForbidden() => AssertBoolVariable(SANDBOX_CHILDREN_FORBIDDEN, () => IsChildrenForbidden, true, true);
 
     [Test]
-    public void ShouldReturnFalseByDefaultForVerboseOutputNeeded() => AssertBoolVariable(SANDBOX_VERBOSE, () => IsVerboseOutputNeeded, null, false);
+    public void ShouldReturnFatalByDefaultForLogLevel() => AssertVariable(SANDBOX_LOG_LEVEL, () => LogLevel, null as object, _ => AppLogLevel.Fatal);
 
     [Test]
-    public void ShouldReturnFalseWhenVerboseOutputNotNeeded() => AssertBoolVariable(SANDBOX_VERBOSE, () => IsVerboseOutputNeeded, false, false);
+    public void ShouldReturnFatalLogLevel() => AssertVariable(SANDBOX_LOG_LEVEL, () => LogLevel, "FATAL", _ => AppLogLevel.Fatal);
 
     [Test]
-    public void ShouldReturnTrueWhenVerboseOutputNeeded() => AssertBoolVariable(SANDBOX_VERBOSE, () => IsVerboseOutputNeeded, true, true);
+    public void ShouldReturnErrorLogLevel() => AssertVariable(SANDBOX_LOG_LEVEL, () => LogLevel, "ERROR", _ => AppLogLevel.Error);
+
+    [Test]
+    public void ShouldReturnWarnLogLevel() => AssertVariable(SANDBOX_LOG_LEVEL, () => LogLevel, "WARN", _ => AppLogLevel.Warn);
+
+    [Test]
+    public void ShouldReturnInfoLogLevel() => AssertVariable(SANDBOX_LOG_LEVEL, () => LogLevel, "INFO", _ => AppLogLevel.Info);
+
+    [Test]
+    public void ShouldReturnDebugLogLevel() => AssertVariable(SANDBOX_LOG_LEVEL, () => LogLevel, "DEBUG", _ => AppLogLevel.Debug);
 
     [Test]
     public void ShouldReturnFalseByDefaultForSyslogOutputNeeded() => AssertBoolVariable(SANDBOX_SYSLOG, () => IsSyslogOutputNeeded, null, false);

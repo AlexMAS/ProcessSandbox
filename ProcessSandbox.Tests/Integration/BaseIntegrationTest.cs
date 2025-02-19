@@ -26,6 +26,12 @@ public abstract class BaseIntegrationTest
     {
         var resultOut = Environment.GetEnvironmentVariable("RESULT_OUT");
 
+        // In case of debugging in VS
+        if (string.IsNullOrWhiteSpace(resultOut) && !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("VisualStudioEdition")))
+        {
+            resultOut = Environment.CurrentDirectory + @"\..\..\..\..\integration-tests-out";
+        }
+
         if (string.IsNullOrWhiteSpace(resultOut))
         {
             throw new AssertionException("The RESULT_OUT variable is not defined.");

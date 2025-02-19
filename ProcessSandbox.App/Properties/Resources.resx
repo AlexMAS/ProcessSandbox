@@ -172,8 +172,8 @@ DESCRIPTION
                                      (unlimited by default or in case of negative values);
         SANDBOX_CHILDREN_FORBIDDEN to forbid creating child processes
                                      (children are allowed by default, set 1 to forbid);
-        SANDBOX_VERBOSE            to enable verbose output
-                                     (verbosity is disabled by default, set 1 to enable);
+        SANDBOX_LOG_LEVEL          defines verbosity of the utility logging
+                                     (FATAL by default, available - DEBUG/INFO/WARN/ERROR);
         SANDBOX_SYSLOG             to enable output to the syslog
                                      (syslog is disabled by default, set 1 to enable).
 
