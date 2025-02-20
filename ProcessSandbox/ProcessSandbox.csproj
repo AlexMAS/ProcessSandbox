@@ -1,20 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <ProcessSandboxVersion>0.1.0</ProcessSandboxVersion>
+    <ProcessSandboxVersion>0.2.0</ProcessSandboxVersion>
   </PropertyGroup>
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RuntimeIdentifiers>linux-x64</RuntimeIdentifiers>
     <RootNamespace>ProcessSandbox</RootNamespace>
     <AssemblyTitle>ProcessSandbox</AssemblyTitle>
     <AssemblyVersion>$(ProcessSandboxVersion).0</AssemblyVersion>
     <FileVersion>$(ProcessSandboxVersion).0</FileVersion>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -35,7 +33,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="$(SolutionDir)Sandbox/sandbox-exec" Pack="true" PackagePath="runtimes/linux-x64/native/">
+    <None Include="../Sandbox/sandbox-exec" Pack="true" PackagePath="runtimes/linux-x64/native/">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="README.md" Pack="true" PackagePath="/" />

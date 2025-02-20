@@ -16,7 +16,7 @@ internal static class AppEnv
     public const string SANDBOX_FILE_SIZE_LIMIT = nameof(SANDBOX_FILE_SIZE_LIMIT);
     public const string SANDBOX_OPEN_FILE_LIMIT = nameof(SANDBOX_OPEN_FILE_LIMIT);
     public const string SANDBOX_CHILDREN_FORBIDDEN = nameof(SANDBOX_CHILDREN_FORBIDDEN);
-    public const string SANDBOX_VERBOSE = nameof(SANDBOX_VERBOSE);
+    public const string SANDBOX_LOG_LEVEL = nameof(SANDBOX_LOG_LEVEL);
     public const string SANDBOX_SYSLOG = nameof(SANDBOX_SYSLOG);
 
 
@@ -93,9 +93,9 @@ internal static class AppEnv
     public static bool IsChildrenForbidden => GetBoolVariable(SANDBOX_CHILDREN_FORBIDDEN);
 
     /// <summary>
-    /// Возвращает <c>true</c> в случае, если необходимо включить подробный вывод о ходе работы.
+    /// Возвращает уровень логирования для вывода информации о ходе работы.
     /// </summary>
-    public static bool IsVerboseOutputNeeded => GetBoolVariable(SANDBOX_VERBOSE);
+    public static AppLogLevel LogLevel => AppLogLevel.Parse(GetStringVariable(SANDBOX_LOG_LEVEL));
 
     /// <summary>
     /// Возвращает <c>true</c> в случае, если необходимо включить вывод о ходе работы в системный лог.

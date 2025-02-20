@@ -47,5 +47,4 @@ _ReSharper*/
 *.sln.iml
 
 # Custom Rules
-build/
-out/
+integration-tests-out/

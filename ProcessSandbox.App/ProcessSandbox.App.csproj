@@ -46,11 +46,4 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <!--<ItemGroup>
-    <Content Update="sandbox-exec">
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-  </ItemGroup>-->
-
 </Project>
