@@ -19,8 +19,8 @@ sandbox
 The next example runs a process with CPU and memory limits, and prints the execution statistics afterwards.
 
 ```sh
-SANDBOX_CPU_LIMIT=1000
-SANDBOX_MEMORY_LIMIT=1000000
+export SANDBOX_CPU_LIMIT=1000
+export SANDBOX_MEMORY_LIMIT=1000000
 sandbox ./my-calc.stat ./ ./my-calc 1 + 2
 cat ./my-calc.stat
 ```

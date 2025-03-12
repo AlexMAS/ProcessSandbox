@@ -16,7 +16,7 @@ internal class SandboxProcessRunner : IProcessRunner
         var process = new Process();
         process.StartInfo.UserName = startInfo.UserName;
         process.StartInfo.WorkingDirectory = startInfo.WorkingDirectory;
-        process.StartInfo.FileName = SANDBOX;
+        process.StartInfo.FileName = FindSandboxExec();
         process.StartInfo.Arguments = BuildSandboxArguments(startInfo);
         process.StartInfo.CreateNoWindow = true;
         process.StartInfo.UseShellExecute = false;
@@ -27,6 +27,32 @@ internal class SandboxProcessRunner : IProcessRunner
         process.Start();
 
         return process;
+    }
+
+    private static string FindSandboxExec()
+    {
+        var processDir = Path.GetDirectoryName(Environment.ProcessPath);
+
+        if (processDir == null)
+        {
+            return SANDBOX;
+        }
+
+        var sandboxExec = Path.Join(processDir, SANDBOX);
+
+        if (File.Exists(sandboxExec))
+        {
+            return sandboxExec;
+        }
+
+        sandboxExec = Path.Combine(processDir, "runtimes/linux-x64/native", SANDBOX);
+
+        if (File.Exists(sandboxExec))
+        {
+            return sandboxExec;
+        }
+
+        throw new InvalidOperationException($"Cannot find {SANDBOX} in the application directory.");
     }
 
     private static string BuildSandboxArguments(ProcessSandboxStartInfo startInfo)

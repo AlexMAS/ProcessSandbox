@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <ProcessSandboxVersion>0.2.0</ProcessSandboxVersion>
+    <ProcessSandboxVersion>0.3.0</ProcessSandboxVersion>
   </PropertyGroup>
 
   <PropertyGroup>
